@@ -332,16 +332,16 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
                       if(unshortenedUrl.match(/earnkaro/g)){
                         let finalLink =unshortenedUrl.split('dl=');
                           if(conurlencode(finalLink[1]).match(/[?]/g)){
-                          tagnot= conurlencode(finalLink[1]).concat('&tag='+ListflagData.org_post_tag).replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
+                          tagnot= conurlencode(finalLink[1]).concat('&tag=kudrats-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
                         }else{
-                          tagnot= conurlencode(finalLink[1]).concat('?tag='+ListflagData.org_post_tag).replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
+                          tagnot= conurlencode(finalLink[1]).concat('?tag=kudrats-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
                         }
                       }else if(unshortenedUrl.match(/paisawapas/g)){
                           let finalLink =unshortenedUrl.split('url=');
                             if(conurlencode(finalLink[1]).match(/[?]/g)){
-                            tagnot= conurlencode(finalLink[1]).concat('&tag='+ListflagData.org_post_tag).replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
+                            tagnot= conurlencode(finalLink[1]).concat('&tag=kudrats-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
                           }else{
-                            tagnot= conurlencode(finalLink[1]).concat('?tag='+ListflagData.org_post_tag).replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
+                            tagnot= conurlencode(finalLink[1]).concat('?tag=kudrats-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
                           }
                       }else{
                     if(conurlencode(unshortenedUrl).match(/[?]/g)){
@@ -374,14 +374,14 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
                       }
                      
                     let tagnots= finalLink.join('&').replace(/@/g, '').replace(/&&/g, '&').replace(/([\?][\/])/g, '?').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?');
-                    let tagnotRep= tagnots.replace(/[\?]/g,'?tag='+ListflagData.org_post_tag+'&').replace(/&&/g, '&').replace(/([\?][\/])/g, '?').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?');
+                    let tagnotRep= tagnots.replace(/[\?]/g,'?tag=kudrats-21&').replace(/&&/g, '&').replace(/([\?][\/])/g, '?').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?');
                      if(tagnotRep.charAt(tagnotRep.length-1) == '&'){
                       tagnot= tagnotRep.slice(0, -1);
                      }else{
                       tagnot= tagnotRep;
                      }
                     }else{
-                     tagnot= unshortenedUrl.replace(/@/g, '').concat('?tag='+ListflagData.org_post_tag).replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&');
+                     tagnot= unshortenedUrl.replace(/@/g, '').concat('?tag=kudrats-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&');
                     }
                   }
                   if(ListflagData.bitlyFlag == "True"){ 
@@ -514,7 +514,7 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
                           var minu = dateObj.getMinutes();
                           let ren = Math.random().toString(36).substring(7);
                         let tagnots= finalLink.join('&').replace(/@/g, '').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&');
-                        tagnot= tagnots.concat('&affid=anavanish').concat('&affExtParam1='+month+day+year+'cl'+hour+minu+ren).concat('&affExtParam2=FK_Kudrat').replace(/(\?&)/g, '?').replace(/&&/g, '&');
+                        tagnot= tagnots.concat('&affid=anavanish').replace(/(\?&)/g, '?').replace(/&&/g, '&');
                           console.log('tagnot: ', tagnot);
                         }else{
                           var dateObj = new Date();
@@ -524,7 +524,7 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
                                 var hour = dateObj.getHours();
                                 var minu = dateObj.getMinutes();
                                 let ren = Math.random().toString(36).substring(7);
-                          tagnot= tagnotFlipkart.concat('?affid=anavanish').concat('&affExtParam1='+month+day+year+'cl'+hour+minu+ren).concat('&affExtParam2=FK_Kudrat');
+                          tagnot= tagnotFlipkart.concat('?affid=anavanish');
                         }
         
                         if(ListflagData.bitlyFlag == "True"){ 
@@ -667,14 +667,14 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
                       }
                      
                     let tagnots= finalLink.join('&').replace(/@/g, '').replace(/&&/g, '&').replace(/([\?][\/])/g, '?').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
-                    let tagnotRep= tagnots.replace(/[\?]/g,'?tag='+ListflagData.org_post_tag+'&').replace(/&&/g, '&').replace(/([\?][\/])/g, '?').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
+                    let tagnotRep= tagnots.replace(/[\?]/g,'?tag=kudrats-21&').replace(/&&/g, '&').replace(/([\?][\/])/g, '?').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
                      if(tagnotRep.charAt(tagnotRep.length-1) == '&'){
                       tagnot= tagnotRep.slice(0, -1);
                      }else{
                       tagnot= tagnotRep;
                      }
                     }else{
-                     tagnot= unshortenedUrl.replace(/@/g, '').concat('?tag='+ListflagData.org_post_tag).replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
+                     tagnot= unshortenedUrl.replace(/@/g, '').concat('?tag=kudrats-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
                     }
                    example(tagnot.replace(/&demoyou/g, ''));
                    if(ListflagData.bitlyFlag == "True"){ 
