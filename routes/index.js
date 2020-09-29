@@ -7,7 +7,7 @@ let request = require("request");
 var config = require('../config/global');
 var connection = require('../config/connection');
 const BitlyClient = require('bitly').BitlyClient;
-const bitly = new BitlyClient('3e06891f5aea7899cebaed2ff3db35512e639eb3');
+// const bitly = new BitlyClient('3e06891f5aea7899cebaed2ff3db35512e639eb3');
 var tall = require('tall').default;
 const htmlToText = require('html-to-text');
 const axios = require('axios');
@@ -302,6 +302,7 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
             console.log('err: ', err);
           }
         let ListflagData = flagData[0];
+        let bitly = new BitlyClient(ListflagData.current_bitly);
         let sqls = "SELECT post_id FROM post_telegram1 ORDER BY id DESC LIMIT 1";
         connection.query(sqls, function (err, rides) {
           if (err) {
