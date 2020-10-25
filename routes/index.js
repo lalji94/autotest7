@@ -723,7 +723,7 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
                   if (err) {
                     console.log('err: ', err);
                   }else{
-                      teleAutoPostChannel(finalAmazon,"@salebabaG",ListflagData.kudart_token);
+                      teleAutoPostChannel(finalAmazon,"@OnlyLooterJunction",ListflagData.kudart_token);
               }
             })
             }
