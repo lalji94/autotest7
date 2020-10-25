@@ -44,7 +44,7 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
           console.log('siteTitle: ', siteTitle);
           var avilabilty = $('#availability').find('span').text().trim();
           console.log('avilabilty: ', avilabilty);
-          let sqlss = "INSERT INTO post_telegram3 (post_id,data) VALUES (" + storeId + ",'demo')";
+          let sqlss = "INSERT INTO post_telegram1 (post_id,data) VALUES (" + storeId + ",'demo')";
           connection.query(sqlss, function (err, rides) {
             if (err) {
             console.log('err: ', err);
@@ -72,7 +72,7 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
       })
     })
       .catch(err =>{ 
-        let sqlss = "INSERT INTO post_telegram3 (post_id,data) VALUES (" + storeId + ",'demo')";
+        let sqlss = "INSERT INTO post_telegram1 (post_id,data) VALUES (" + storeId + ",'demo')";
         connection.query(sqlss, function (err, rides) {
           if (err) {
           console.log('err: ', err);
@@ -262,7 +262,7 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
           let last_insert_id = _.last(matchObj);
           console.log('last_insert_id: ', last_insert_id);
 
-          let sql = 'SELECT COUNT(*) as cnt FROM post_telegram3 WHERE post_telegram3.post_id =' + last_insert_id.id;
+          let sql = 'SELECT COUNT(*) as cnt FROM post_telegram1 WHERE post_telegram1.post_id =' + last_insert_id.id;
           connection.query(sql, function (err, rides) {
             if (err) {
               console.log('err: ', err);
@@ -303,7 +303,7 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
           }
         let ListflagData = flagData[0];
         let bitly = new BitlyClient(ListflagData.current_bitly);
-        let sqls = "SELECT post_id FROM post_telegram3 ORDER BY id DESC LIMIT 1";
+        let sqls = "SELECT post_id FROM post_telegram1 ORDER BY id DESC LIMIT 1";
         connection.query(sqls, function (err, rides) {
           if (err) {
             console.log('err: ', err);
@@ -333,16 +333,16 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
                       if(unshortenedUrl.match(/earnkaro/g)){
                         let finalLink =unshortenedUrl.split('dl=');
                           if(conurlencode(finalLink[1]).match(/[?]/g)){
-                          tagnot= conurlencode(finalLink[1]).concat('&tag=dealhuo5-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
+                          tagnot= conurlencode(finalLink[1]).concat('&tag=kudrats-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
                         }else{
-                          tagnot= conurlencode(finalLink[1]).concat('?tag=dealhuo5-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
+                          tagnot= conurlencode(finalLink[1]).concat('?tag=kudrats-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
                         }
                       }else if(unshortenedUrl.match(/paisawapas/g)){
                           let finalLink =unshortenedUrl.split('url=');
                             if(conurlencode(finalLink[1]).match(/[?]/g)){
-                            tagnot= conurlencode(finalLink[1]).concat('&tag=dealhuo5-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
+                            tagnot= conurlencode(finalLink[1]).concat('&tag=kudrats-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
                           }else{
-                            tagnot= conurlencode(finalLink[1]).concat('?tag=dealhuo5-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
+                            tagnot= conurlencode(finalLink[1]).concat('?tag=kudrats-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
                           }
                       }else{
                     if(conurlencode(unshortenedUrl).match(/[?]/g)){
@@ -375,14 +375,14 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
                       }
                      
                     let tagnots= finalLink.join('&').replace(/@/g, '').replace(/&&/g, '&').replace(/([\?][\/])/g, '?').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?');
-                    let tagnotRep= tagnots.replace(/[\?]/g,'?tag=dealhuo5-21&').replace(/&&/g, '&').replace(/([\?][\/])/g, '?').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?');
+                    let tagnotRep= tagnots.replace(/[\?]/g,'?tag=kudrats-21&').replace(/&&/g, '&').replace(/([\?][\/])/g, '?').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?');
                      if(tagnotRep.charAt(tagnotRep.length-1) == '&'){
                       tagnot= tagnotRep.slice(0, -1);
                      }else{
                       tagnot= tagnotRep;
                      }
                     }else{
-                     tagnot= unshortenedUrl.replace(/@/g, '').concat('?tag=dealhuo5-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&');
+                     tagnot= unshortenedUrl.replace(/@/g, '').concat('?tag=kudrats-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&');
                     }
                   }
                   if(ListflagData.bitlyFlag == "True"){ 
@@ -668,14 +668,14 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
                       }
                      
                     let tagnots= finalLink.join('&').replace(/@/g, '').replace(/&&/g, '&').replace(/([\?][\/])/g, '?').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
-                    let tagnotRep= tagnots.replace(/[\?]/g,'?tag=dealhuo5-21&').replace(/&&/g, '&').replace(/([\?][\/])/g, '?').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
+                    let tagnotRep= tagnots.replace(/[\?]/g,'?tag=kudrats-21&').replace(/&&/g, '&').replace(/([\?][\/])/g, '?').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
                      if(tagnotRep.charAt(tagnotRep.length-1) == '&'){
                       tagnot= tagnotRep.slice(0, -1);
                      }else{
                       tagnot= tagnotRep;
                      }
                     }else{
-                     tagnot= unshortenedUrl.replace(/@/g, '').concat('?tag=dealhuo5-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
+                     tagnot= unshortenedUrl.replace(/@/g, '').concat('?tag=kudrats-21').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&').replace(/([\/][\?])/g, '?').replace(/([\?][\/])/g, '?');
                     }
                    example(tagnot.replace(/&demoyou/g, ''));
                    if(ListflagData.bitlyFlag == "True"){ 
@@ -718,7 +718,7 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
               if(finalAmazon.match(/(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)/g)){
                 let finalIdList = JSON.parse(ListflagData.array_data).user;
                 let insertFeild = [rides[0].post_id + i, JSON.stringify(finalAmazon.replace(/[^0-9a-zA-Zㄱ-힣+×÷=%♤♡☆♧)(*&^/~#@!-:;,?`_|<>{}¥£€$◇■□●○•°※¤《》¡¿₩\[\]\"\' \\]/g ,""))]
-                let sqlss = "INSERT INTO post_telegram3 (post_id,data) VALUES (" + nextId + "," + JSON.stringify(finalAmazon.replace(/[^0-9a-zA-Zㄱ-힣+×÷=%♤♡☆♧)(*&^/~#@!-:;,?`_|<>{}¥£€$◇■□●○•°※¤《》¡¿₩\[\]\"\' \\]/g ,"")) + ")";
+                let sqlss = "INSERT INTO post_telegram1 (post_id,data) VALUES (" + nextId + "," + JSON.stringify(finalAmazon.replace(/[^0-9a-zA-Zㄱ-힣+×÷=%♤♡☆♧)(*&^/~#@!-:;,?`_|<>{}¥£€$◇■□●○•°※¤《》¡¿₩\[\]\"\' \\]/g ,"")) + ")";
                 connection.query(sqlss, [insertFeild], function (err, rides) {
                   if (err) {
                     console.log('err: ', err);
@@ -729,7 +729,7 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
             }
               },Math.ceil(array.length/5)*3500);
             }else{
-              let sqlss = "INSERT INTO post_telegram3 (post_id,data) VALUES (" + nextId + ",'demo')";
+              let sqlss = "INSERT INTO post_telegram1 (post_id,data) VALUES (" + nextId + ",'demo')";
               connection.query(sqlss, function (err, rides) {
                 if (err) {
                 console.log('err: ', err);
@@ -760,7 +760,7 @@ router.post('/getAllInOneData', function (req, res) {
   async.waterfall([
     function (nextCall) {
       var sql = "Select count(*) as TotalCount from ??";
-      connection.query(sql, ['post_telegram3'], function (err, rides) {
+      connection.query(sql, ['post_telegram1'], function (err, rides) {
         if (err) {
           console.log('11');
           return nextCall({
@@ -775,7 +775,7 @@ router.post('/getAllInOneData', function (req, res) {
       startNum = parseInt(req.body.start) || 0;
       LimitNum = parseInt(req.body.length) || 10;
       var query = "Select * from ?? ORDER BY id DESC limit ? OFFSET ?";
-      connection.query(query, ["post_telegram3", LimitNum, startNum], function (err, ridess) {
+      connection.query(query, ["post_telegram1", LimitNum, startNum], function (err, ridess) {
         if (err) {
           return nextCall({
             "message": "something went wrong",
@@ -1004,6 +1004,3 @@ function whatsapp_posts2(AmazonMsg,Amznapi,Amznphoneid,Amznprodid){
     }
   }
 module.exports = router;
-
-
-
