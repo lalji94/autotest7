@@ -395,19 +395,26 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
 				 // final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),response.link).replace(/.#x...../g,' %E2%99%A8 ').replace(/&/g, //'and').replace(/;/g, ' ');
 				//	}
 					
-					 async function example(dddd) {
-                    let response = await bitly
-                    .shorten(dddd)
-                    .then(function(result) {
-                      return result;
-                    })
-                    .catch(function(error) {
-                     let responses ={"link":dddd};
-                     return responses;
-                    });
-                        final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),response.link);
-                        
-                      }
+					
+				async function example(dddd) {
+          let response =await bitly
+          .shorten(dddd)
+          .then(function(result) {
+          final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),result.link);
+         })
+          .catch(function(error) {
+            tinyUrl1(dddd)
+          });
+        }
+      async function tinyUrl1(dddd) {  
+        await request({
+          uri: "http://tinyurl.com/api-create.php?url="+dddd,
+          method: "GET",
+        }, (err, response, body) => {
+          let responses ={"link":body};
+          final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),responses.link);
+        })
+      }
                     function exampless(dddd) {  
                     final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),dddd);
                     }
@@ -585,32 +592,35 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
                       }
                     }
 
-                      async function example1(dddd) {
-                        let response =await bitly.shorten(dddd);
-                      final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),response.link).replace(/.#x...../g,' %E2%99%A8 ').replace(/&/g, 'and').replace(/;/g, ' ');
-                    }
-                    async function example3(dddd) {
-                      let response = await bitly
+                    async function example1(dddd) {
+                      let response =await bitly
                       .shorten(dddd)
                       .then(function(result) {
-                        return result;
-                      })
+                      final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),result.link).replace(/.#x...../g,' %E2%99%A8 ').replace(/&/g, 'and').replace(/;/g, '');
+                     })
                       .catch(function(error) {
-                       let jjjh =  unshort(dddd).then(function(unshortenedUrls){ 
-                         let responses;
-                         if(unshortenedUrls.unshorten.match(/www.flipkart.com/g)){
-                         responses ={"link":unshortenedUrls.unshorten.replace(/www.flipkart.com/g, 'dl.flipkart.com/dl')};
-                          }else{
-                         responses ={"link":unshortenedUrls.unshorten};
-                          }
-                         return responses;
-                      })
-                      .catch(function(err){ return err;})
-                      return jjjh;
-  
+                        tinyUrl2(dddd)
                       });
-                        final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),response.link);
-                      }
+                    }
+                  async function tinyUrl2(dddd) {  
+                    await request({
+                      uri: "http://tinyurl.com/api-create.php?url="+dddd,
+                      method: "GET",
+                    }, (err, response, body) => {
+                      let responses ={"link":body};
+                      final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),responses.link);
+                    })
+                  }
+                  async function example3(dddd) {
+                    let response =await bitly
+                    .shorten(dddd)
+                    .then(function(result) {
+                    final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),result.link);
+                   })
+                    .catch(function(error) {
+                      tinyUrl2(dddd)
+                    });
+                  }
                        function example4(dddd) {
                          console.log('dddd: ', dddd);
                          let response =  unshort(dddd).then(function(unshortenedUrls){ 
@@ -683,19 +693,25 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
                    }else{
                      example7(tagnot.replace(/&demoyou/g, ''));
                    }
-                     async function example6(dddd) {
-                    let response = await bitly
-                    .shorten(dddd)
-                    .then(function(result) {
-                      return result;
-                    })
-                    .catch(function(error) {
-                     let responses ={"link":dddd};
-                     return responses;
-                    });
-                        final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),response.link);
-                        
+                      async function example6(dddd) {
+                        let response =await bitly
+                        .shorten(dddd)
+                        .then(function(result) {
+                        final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),result.link);
+                       })
+                        .catch(function(error) {
+                          tinyUrl3(dddd)
+                        });
                       }
+                    async function tinyUrl3(dddd) {  
+                      await request({
+                        uri: "http://tinyurl.com/api-create.php?url="+dddd,
+                        method: "GET",
+                      }, (err, response, body) => {
+                        let responses ={"link":body};
+                        final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),responses.link);
+                      })
+                    }
                      function example7(dddd) {  
                      final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),dddd);
                    }  
