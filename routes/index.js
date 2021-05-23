@@ -230,6 +230,35 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
         });
       }
     }
+
+router.get('/singlepostFlags', function (req, res) {
+  async.waterfall([
+    function (nextCall) {
+      // postImageWidth('https://gluv.in/OP/2y6k9pwc9d2')
+      var sqlss = " SELECT * FROM post_flags WHERE id = 1";
+      connection.query(sqlss, function (err, rides) {
+        if (err) {
+          return nextCall({
+            "message": "something went wrong",
+          });
+        }
+        nextCall(null, rides[0]);
+      })
+    }
+  ], function (err, response) {
+    if (err) {
+      return res.send({
+        status: err.code ? err.code : 400,
+        message: (err && err.msg) || "someyhing went wrong"
+      });
+    }
+    return res.send({
+      status: 200,
+      message: "Single recored sucessfully",
+      data: response
+    });
+  });
+});
  
 // setInterval( function (req, res, next) {
 //   async.waterfall([
