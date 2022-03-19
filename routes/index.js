@@ -44,7 +44,7 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
           console.log('siteTitle: ', siteTitle);
           var avilabilty = $('#availability').find('span').text().trim();
           console.log('avilabilty: ', avilabilty);
-          let sqlss = "INSERT INTO post_telegram1 (post_id,data) VALUES (" + storeId + ",'demo')";
+          let sqlss = "INSERT INTO post_telegram5 (post_id,data) VALUES (" + storeId + ",'demo')";
           connection.query(sqlss, function (err, rides) {
             if (err) {
             console.log('err: ', err);
@@ -72,7 +72,7 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
       })
     })
       .catch(err =>{ 
-        let sqlss = "INSERT INTO post_telegram1 (post_id,data) VALUES (" + storeId + ",'demo')";
+        let sqlss = "INSERT INTO post_telegram5 (post_id,data) VALUES (" + storeId + ",'demo')";
         connection.query(sqlss, function (err, rides) {
           if (err) {
           console.log('err: ', err);
@@ -292,7 +292,7 @@ router.get('/singlepostFlags', function (req, res) {
           let last_insert_id = _.last(matchObj);
           console.log('last_insert_id: ', last_insert_id);
 
-          let sql = 'SELECT COUNT(*) as cnt FROM post_telegram1 WHERE post_telegram1.post_id =' + last_insert_id.id;
+          let sql = 'SELECT COUNT(*) as cnt FROM post_telegram5 WHERE post_telegram5.post_id =' + last_insert_id.id;
           connection.query(sql, function (err, rides) {
             if (err) {
               console.log('err: ', err);
@@ -333,7 +333,7 @@ router.get('/singlepostFlags', function (req, res) {
           }
         let ListflagData = flagData[0];
         let bitly = new BitlyClient(ListflagData.current_bitly);
-        let sqls = "SELECT post_id FROM post_telegram1 ORDER BY id DESC LIMIT 1";
+        let sqls = "SELECT post_id FROM post_telegram5 ORDER BY id DESC LIMIT 1";
         connection.query(sqls, function (err, rides) {
           if (err) {
             console.log('err: ', err);
@@ -765,7 +765,7 @@ router.get('/singlepostFlags', function (req, res) {
               if(finalAmazon.match(/(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)/g)){
                 let finalIdList = JSON.parse(ListflagData.array_data).user;
                 let insertFeild = [rides[0].post_id + i, JSON.stringify(finalAmazon.replace(/[^0-9a-zA-Zㄱ-힣+×÷=%♤♡☆♧)(*&^/~#@!-:;,?`_|<>{}¥£€$◇■□●○•°※¤《》¡¿₩\[\]\"\' \\]/g ,""))]
-                let sqlss = "INSERT INTO post_telegram1 (post_id,data) VALUES (" + nextId + "," + JSON.stringify(finalAmazon.replace(/[^0-9a-zA-Zㄱ-힣+×÷=%♤♡☆♧)(*&^/~#@!-:;,?`_|<>{}¥£€$◇■□●○•°※¤《》¡¿₩\[\]\"\' \\]/g ,"")) + ")";
+                let sqlss = "INSERT INTO post_telegram5 (post_id,data) VALUES (" + nextId + "," + JSON.stringify(finalAmazon.replace(/[^0-9a-zA-Zㄱ-힣+×÷=%♤♡☆♧)(*&^/~#@!-:;,?`_|<>{}¥£€$◇■□●○•°※¤《》¡¿₩\[\]\"\' \\]/g ,"")) + ")";
                 connection.query(sqlss, [insertFeild], function (err, rides) {
                   if (err) {
                     console.log('err: ', err);
@@ -776,7 +776,7 @@ router.get('/singlepostFlags', function (req, res) {
             }
               },Math.ceil(array.length/5)*3500);
             }else{
-              let sqlss = "INSERT INTO post_telegram1 (post_id,data) VALUES (" + nextId + ",'demo')";
+              let sqlss = "INSERT INTO post_telegram5 (post_id,data) VALUES (" + nextId + ",'demo')";
               connection.query(sqlss, function (err, rides) {
                 if (err) {
                 console.log('err: ', err);
@@ -807,7 +807,7 @@ router.post('/getAllInOneData', function (req, res) {
   async.waterfall([
     function (nextCall) {
       var sql = "Select count(*) as TotalCount from ??";
-      connection.query(sql, ['post_telegram1'], function (err, rides) {
+      connection.query(sql, ['post_telegram5'], function (err, rides) {
         if (err) {
           console.log('11');
           return nextCall({
@@ -822,7 +822,7 @@ router.post('/getAllInOneData', function (req, res) {
       startNum = parseInt(req.body.start) || 0;
       LimitNum = parseInt(req.body.length) || 10;
       var query = "Select * from ?? ORDER BY id DESC limit ? OFFSET ?";
-      connection.query(query, ["post_telegram1", LimitNum, startNum], function (err, ridess) {
+      connection.query(query, ["post_telegram5", LimitNum, startNum], function (err, ridess) {
         if (err) {
           return nextCall({
             "message": "something went wrong",
